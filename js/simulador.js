@@ -6,6 +6,7 @@ const clearCart = document.querySelector('.clear-cart');
 let pricesCart = document.querySelector('.prices_cart');
 
 let cart = [];
+let products = [];
 class Product {
     constructor(name, price, count, img, brand, category, code){
         this.name = name;
@@ -18,25 +19,22 @@ class Product {
     }
 }
 
-let products = [];
-
-const loadProducts = () =>{
-    fetch("../data.json")
-    .then((res) => res.json())
-    .then((data) => {
-        console.log(data);
-        data.forEach((prod) =>{
-            let newProduct = new Product(prod.name, prod.price, prod.count, prod.img, prod.brand, prod.category, prod.code);
-            products.push(newProduct);
+//Fetching products from API.
+const loadProducts = async () =>{
+    const resp = await fetch("../data.json");
+    const data = await resp.json();
+    if(products.length < data.length){
+        data.forEach((prod) => {
+            products.push(new Product(prod.name, prod.price, prod.count, prod.img, prod.brand, prod.category, prod.code));
         });
-    });
-    
-    console.log(products);
+    }
+
+    saveProducts();
 }
 
 loadProducts();
 
-
+//Json storage Functions
 function saveProducts(){
     localStorage.setItem('products', JSON.stringify(products));
 }
@@ -53,10 +51,18 @@ if(sessionStorage.getItem('shoppingCart') != null){
     loadCart();
 }
 
+if(localStorage.getItem('products') != null){
+    products = JSON.parse(localStorage.getItem('products'));
+}
+
+console.log(products);
+
+//Cleans HTML cart List.
 function cleanCart(){
     cartList.innerHTML = " ";
 }
 
+//Cart's total product count.
 function totalCount(){
     let totalCount = 0;
         
@@ -67,6 +73,7 @@ function totalCount(){
     return totalCount;
 }
 
+//Add a product to the cart.
 function addToCart(e){
     if(e.target.classList.contains("shoes_buy_button")){
         let productName = e.target.getAttribute("data-name");
@@ -82,13 +89,14 @@ function addToCart(e){
     }
 } 
 
+//Add an existing cart product to the cart.
 function addProduct(product){
     product.count++;        
     cartCount.innerHTML = `<span>Cart (${totalCount()})</span>`;
     saveCart();
 }
 
-//Displaying Products Functions.
+//Displaying Products .
 function displayProducts(array){
     array.forEach((prod) =>{
         const row = document.createElement("div");
@@ -108,6 +116,7 @@ function displayProducts(array){
       cartCount.innerHTML = `<span>Cart (${totalCount()})</span>`;
 }
 
+//Displaying Every Product added to the cart.
 function displayCart(){
     saveCart();
     cleanCart();
@@ -151,8 +160,9 @@ function displayCart(){
             cartTotal.innerHTML = `<span>${totalPrice()}</span>`;
         }
 
-}   
+} 
 
+//Returns mostExpensive item from an array
 let mostExpensive = (array) => {
     let mostExpensiveProd;
     let mostExpensivePrice = 0;
@@ -189,14 +199,6 @@ const addProdNot = (product) => Toastify({
 /*
 Cosas importantes - Entrega final.: 
 
--Local Storage **
-
--Asincrónicas
--Archivo Json
--Crear archivo data.Json y ahi hacer mi propia API.
--Realizar un fetch() creando función cargar productos.
-
--Interacción con el DOM. **
 -Incoroporar al menos una librería al proyecto (Toastify para alert.).
 
 -ENVIAR LINK CON EL REPO Y OTRO LINK CON EL HOSTING.
@@ -206,6 +208,8 @@ Cosas importantes - Entrega final.:
     -- Buscador y que encuentre el producto por nombre.
     -- VER PÁGINAS WEB.
 
+--Nota: 
+ --Se podría hacer orientado a objetos en vez de funcional.
 -De interacción con el DOM falta: 
 
 */

@@ -1,4 +1,5 @@
 //CART FUNCTIONS
+//Increments the cart product quantity.
 function addFromCart(e){
     if(e.target.classList.contains("plus-item")){
         let productName = e.target.getAttribute("data-name");
@@ -10,6 +11,7 @@ function addFromCart(e){
     }
 }
 
+//Reduces the quantity of a product from the cart.
 function deleteOneFromCart(e){
     if(e.target.classList.contains("minus-item")){
         let productName = e.target.getAttribute("data-name");
@@ -21,13 +23,12 @@ function deleteOneFromCart(e){
             deleteProduct(product);
         }
   
-        //igual
         displayCart();
     }
 }
 
 
-
+//Delete all the quantity of an specific product from the cart.
 function deleteProductFromCart(e) {
     if(e.target.classList.contains("delete-item")){
         let productName = e.target.getAttribute("data-name");
