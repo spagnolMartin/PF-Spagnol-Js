@@ -1,0 +1,83 @@
+[   
+    {
+        "name":"Nina-Negro",
+        "price":"320",
+        "count":0,
+        "img":"../images/sentez-negra.png",
+        "brand": "Sentez",
+        "category":"bags",
+        "code":"sentN"
+    },
+    {
+        "name":"Nike Dunk Low Black-White",
+        "price":"230",
+        "count":0,
+        "img":"../images/nike_dunk_low_black_white.png",
+        "brand": "Nike",
+        "category":"shoes",
+        "code":"nikeBW"
+    },
+    {
+        "name":"Nike Dunk Low Yellow",
+        "price":"350",
+        "count":0,
+        "img":"../images/nike_dunk_low_yellow.jpg",
+        "brand": "Nike",
+        "category":"shoes",
+        "code":"nikeY"
+    },
+    {
+        "name":"Ray Ban Amore",
+        "price":"110",
+        "count":0,
+        "img":"../images/rayban-amore.png",
+        "brand": "Ray Ban",
+        "category": "glasses",
+        "code":"rayA"
+    },
+    {
+        "name":"Nike Lebron XVII",
+        "price":"180",
+        "count":0,
+        "img":"../images/nike_lebron_xvii.jpg",
+        "brand": "Nike",
+        "category":"shoes",
+        "code":"nikeLB"
+    },
+    {
+        "name":"Ray Ban Ferrari",
+        "price":"115",
+        "count":0,
+        "img":"../images/rayban-ferrari.jpg",
+        "brand": "Ray Ban",
+        "category": "glasses",
+        "code":"rayF"
+    },
+    {
+        "name":"Medusa Biggie",
+        "price":"345",
+        "count":0,
+        "img":"../images/versace.jpg",
+        "brand": "Versace",
+        "category": "glasses",
+        "code":"verMB"
+    },
+    {
+        "name":"Bari",
+        "price":"280",
+        "count":0,
+        "img":"../images/sentez-bari.jpg",
+        "brand": "Sentez",
+        "category":"bags",
+        "code":"sentB"
+    },
+    {
+        "name":"Estocolmo", 
+        "price":"340",
+        "count":0,
+        "img":"../images/sentez-estocolmo.jpg",
+        "brand": "Sentez",
+        "category":"bags",
+        "code":"sentE"
+    } 
+]

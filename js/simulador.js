@@ -5,9 +5,6 @@ const cartTotal = document.querySelector(".total-cart");
 const clearCart = document.querySelector('.clear-cart');
 let pricesCart = document.querySelector('.prices_cart');
 
-console.log(clearCart);
-
-
 let cart = [];
 class Product {
     constructor(name, price, count, img, brand, category, code){
@@ -21,17 +18,24 @@ class Product {
     }
 }
 
-let sentez = new Product("Nina-Negro", "320", 0, "../images/sentez-negra.png", "Sentez","bags", "sentN");
-let dunklow = new Product("Nike Dunk Low Black-White", "230", 0,"../images/nike_dunk_low_black_white.png", "Nike","shoes", "nikeBW");
-let dunklowYellow = new Product("Nike Dunk Low Yellow", "350", 0,"../images/nike_dunk_low_yellow.jpg", "Nike","shoes", "nikeY");
-let lebron = new Product("Nike Lebron XVII", "180", 0,"../images/nike_lebron_xvii.jpg", "Nike","shoes", "nikeLB");
-let raybanAmore = new Product("Ray Ban Amore", "110", 0, "../images/rayban-amore.png", "Ray Ban", "glasses","rayA");
-let raybanFerrari = new Product("Ray Ban Ferrari", "115", 0, "../images/rayban-ferrari.jpg", "Ray Ban", "glasses", "rayF");
-let versaceGlasses = new Product("Medusa Biggie", "345", 0, "../images/versace.jpg", "Versace", "glasses", "verMB");
-let sentezBari = new Product("Bari", "280", 0, "../images/sentez-bari.jpg", "Sentez","bags", "sentB");
-let sentezEstocolmo = new Product("Estocolmo", "340", 0, "../images/sentez-estocolmo.jpg", "Sentez","bags", "sentE");
+let products = [];
 
-let products = [sentez, dunklow, raybanAmore, versaceGlasses, raybanFerrari, lebron, dunklowYellow, sentezBari, sentezEstocolmo];
+const loadProducts = () =>{
+    fetch("../data.json")
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data);
+        data.forEach((prod) =>{
+            let newProduct = new Product(prod.name, prod.price, prod.count, prod.img, prod.brand, prod.category, prod.code);
+            products.push(newProduct);
+        });
+    });
+    
+    console.log(products);
+}
+
+loadProducts();
+
 
 function saveProducts(){
     localStorage.setItem('products', JSON.stringify(products));
@@ -181,17 +185,26 @@ const addProdNot = (product) => Toastify({
       y: 10 // vertical axis - can be a number or a string indicating unity. eg: '2em'
     },
 }).showToast();
+
 /*
 Cosas importantes - Entrega final.: 
 
 -Local Storage **
+
 -Asincrónicas
 -Archivo Json
+-Crear archivo data.Json y ahi hacer mi propia API.
+-Realizar un fetch() creando función cargar productos.
+
 -Interacción con el DOM. **
 -Incoroporar al menos una librería al proyecto (Toastify para alert.).
 
 -ENVIAR LINK CON EL REPO Y OTRO LINK CON EL HOSTING.
 
+-- Cosas que se pueden agregar: 
+    -- Boton View para ver página por cada producto.
+    -- Buscador y que encuentre el producto por nombre.
+    -- VER PÁGINAS WEB.
 
 -De interacción con el DOM falta: 
 
