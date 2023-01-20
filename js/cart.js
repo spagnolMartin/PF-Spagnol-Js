@@ -16,6 +16,7 @@ function deleteOneFromCart(e){
     if(e.target.classList.contains("minus-item")){
         let productName = e.target.getAttribute("data-name");
         let product = cart.find(prod => prod.code === productName);
+        console.log(product);
 
         product.count--;
 

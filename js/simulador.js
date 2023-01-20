@@ -55,8 +55,6 @@ if(localStorage.getItem('products') != null){
     products = JSON.parse(localStorage.getItem('products'));
 }
 
-console.log(products);
-
 //Cleans HTML cart List.
 function cleanCart(){
     cartList.innerHTML = " ";
@@ -150,7 +148,7 @@ function displayCart(){
                 <button class='plus-item btn' data-name="${prod.code}">+</button>
                 <p>${prod.count}</p>
                 <p>$ ${total(prod)}</p>
-                <button class='delete-item btn btn-danger' data-name="${prod.code} ">DELETE ITEM</button>
+                <button class='delete-item btn btn-danger' data-name="${prod.code}">DELETE ITEM</button>
                 </div>
                 `;
                 cartList.appendChild(row);
